@@ -15,4 +15,10 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
+
+  getHero(id : number) : Observable<Hero> {
+    const hero = HEROES.find(h => h.id === id)!; // ! explanation https://stackoverflow.com/questions/43679230/typescript-whats-the-meaning-of-a-at-the-end-of-an-attribution
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(hero);
+  }
 }
